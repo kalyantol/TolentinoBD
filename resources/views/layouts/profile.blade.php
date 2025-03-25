@@ -13,8 +13,26 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('Profile') }}
+                    <table class="table table-hover">
+                        
+                        <tbody>
+                            <tr>
+                                <td scope="row">1</td>
+                                <td>Name: </td>
+                                <td>{{Auth::user()->name}}</td>                            
+                            </tr>                            
+                            <tr>
+                                <td scope="row">2</td>
+                                <td>Email: </td>
+                                <td>{{Auth::user()->email}}</td>                            
+                            </tr>                            
+                            <tr>
+                                <td scope="row">3</td>
+                                <td>Created Date & Time: </td>
+                                <td>{{Auth::user()->created_at}}</td>                            
+                            </tr>                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
