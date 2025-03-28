@@ -30,7 +30,12 @@
                                 <td scope="row">3</td>
                                 <td>Created Date & Time: </td>
                                 <td>{{Auth::user()->created_at}}</td>                            
-                            </tr>                            
+                            </tr>  
+                            <tr>
+                                <td colspan="3">
+                                    <a class="btn btn-primary" href="{{ route('viewprofile',Crypt::encryptString('2')) }}">Kalyan</a>
+                                </td>
+                            </tr>                          
                         </tbody>
                     </table>
                 </div>
