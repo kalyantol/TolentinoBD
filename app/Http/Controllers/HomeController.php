@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -52,7 +54,20 @@ class HomeController extends Controller
             'password_confirmation' => 'required',
         ]);
 
-        echo $request->input('password');
+        $user = Auth::user();
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->with('error', 'Current Password is not matched');
+        }
+        if ($request->current_password == $request->password) {
+            return redirect()->back()->with('error', 'New Password cannot be same as Current Password');
+        }
+        $user->password = Hash::make($request->password);
+        $user->save();
+        // Optionally, you can log the user out after changing the password
+        // Auth::logout();
+        // return redirect()->route('login')->with('success', 'Password Changed Successfully');
+        // Or you can redirect back to the previous page with a success message
+        return redirect()->back()->with('success', 'Password Changed Successfully');
 
         // return redirect()->back()->with('success', 'Password Change Successfully');
 
