@@ -33,7 +33,7 @@
                             </tr>  
                             <tr>
                                 <td colspan="3">
-                                    <a class="btn btn-primary" href="{{ route('viewprofile',Crypt::encryptString('2')) }}">Kalyan</a>
+                                    <a class="btn btn-primary" href="{{ route('viewprofile') }}">Kalyan</a>
                                 </td>
                             </tr>                          
                         </tbody>

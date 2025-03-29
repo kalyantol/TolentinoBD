@@ -22,3 +22,5 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/viewprofile/{id}', [App\Http\Controllers\HomeController::class, 'viewprofile'])->name('viewprofile');
+Route::get('/change/password', [App\Http\Controllers\HomeController::class, 'changepassword'])->name('change.password')->middleware('verified');
+Route::post('/change/password/page', [App\Http\Controllers\HomeController::class, 'changepasswordpage'])->name('change.password.page')->middleware('verified');

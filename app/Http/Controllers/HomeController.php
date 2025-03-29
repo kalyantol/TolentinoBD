@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -35,6 +36,25 @@ class HomeController extends Controller
 
          $id = Crypt::decryptString($id);
          echo $id;
+
+    }
+    public function changepassword(){
+
+         return view('changepassword');
+
+    }
+    public function changepasswordpage(Request $request){
+
+       
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min: 6|max: 14|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+
+        echo $request->input('password');
+
+        // return redirect()->back()->with('success', 'Password Change Successfully');
 
     }
 }
