@@ -55,9 +55,13 @@ class HomeController extends Controller
         ]);
 
         $user = Auth::user();
+        // Check if the current password is correct
         if (!Hash::check($request->current_password, $user->password)) {
             return redirect()->back()->with('error', 'Current Password is not matched');
         }
+        // Check if the new password is the same as the current password
+        // This check is optional, but it can help prevent users from accidentally setting the same password
+        // You can uncomment the following lines if you want to enforce this rule
         if ($request->current_password == $request->password) {
             return redirect()->back()->with('error', 'New Password cannot be same as Current Password');
         }
@@ -68,8 +72,5 @@ class HomeController extends Controller
         // return redirect()->route('login')->with('success', 'Password Changed Successfully');
         // Or you can redirect back to the previous page with a success message
         return redirect()->back()->with('success', 'Password Changed Successfully');
-
-        // return redirect()->back()->with('success', 'Password Change Successfully');
-
     }
 }

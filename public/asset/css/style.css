@@ -1,0 +1,15 @@
+body {
+    margin: 0 0 20px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+.footer div {
+  background-color: black;
+  color: white;
+}
+.footer span {
+  color: white;
+}

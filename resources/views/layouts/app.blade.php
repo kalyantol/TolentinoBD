@@ -13,6 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -105,4 +106,12 @@
         </main>
     </div>
 </body>
+<footer class="bg-body-tertiary text-center text-lg-start footer">
+  <!-- Copyright -->
+  <div class="text-center p-3">
+    © {{ date('Y') }} Copyright:
+    <a class="text-body" href="{{ url('/') }}"><span >{{ config('app.name', 'Laravel') }}</span></a>
+  </div>
+  <!-- Copyright -->
+</footer>
 </html>
