@@ -16,19 +16,24 @@ class StudentController extends Controller
         return view('admin.student.studentslist', compact('students'));
     }
     public function addstudent(){
-        return view('admin.student.addstudent');
+        $classes = DB::table('classes')->get();
+        return view('admin.student.addstudent', compact('classes'));
     }
     public function addstudentstore(Request $request){
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'student_id' => 'required|unique:students,student_id',            
+            'student_id' => 'required|unique:students,student_id|numeric|digits_between:4,10',
+            'class_id' => 'required',        
         ]);
 
         $data = array(
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'student_id' => $request->student_id,
+            'class_id' => $request->class_id,
+            'created_at' => now(),
+            'updated_at' => now(),
         );
 
         DB::table('students')->insert($data);
@@ -53,23 +58,27 @@ class StudentController extends Controller
     }
     public function editstudent($id){
         $id = Crypt::decryptString($id);
+        $classes = DB::table('classes')->get();
         $student = DB::table('students')->where('id', $id)->first();
         if (!$student) {
             return redirect()->route('student.list')->with('error', 'Student not found');
         }
-        return view('admin.student.editstudent', compact('student'));
+        return view('admin.student.editstudent', compact('student', 'classes'));
     }
     public function editstudentstore(Request $request, $id){
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'student_id' => 'required|unique:students,student_id,'.$id,
+            'class_id' => 'required',
         ]);
 
         $data = array(
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'student_id' => $request->student_id,
+            'class_id' => $request->class_id,
+            'updated_at' => now(),
         );
 
         DB::table('students')->where('id', $id)->update($data);

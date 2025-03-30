@@ -43,7 +43,24 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                        </div><br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Class</label>
+                        <div class="col-sm-10">
+                            <select class="form-control @error('class_id') is-invalid @enderror" name="class_id" >                                
+                                <option value="">Select Class</option>
+                                @foreach ($classes as $class)
+                                    <option value="{{ $class->id }}">{{ $class->title }}</option>
+                                @endforeach
+                            </select>
+                                @error('class_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>                                
+                                @enderror
+                        </div>
                     </div>
                     <br>
                     <div class="form-group row">

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password_plain')->nullable();
             $table->string('sex')->nullable();
             $table->string('father_name')->nullable();
-            $table->string('mother__name')->nullable();
+            $table->string('mother_name')->nullable();
             $table->integer('religion_id')->nullable();
             $table->integer('class_id')->nullable();
             $table->integer('section_id')->nullable();
