@@ -51,10 +51,9 @@
                         Student Manegment
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="{{ route('student.list') }}">Students List</a></li>
+                            <li><a class="dropdown-item" href="{{ route('add.student') }}">Add Student</a></li>                            
+                            <li><a class="dropdown-item" href="#">ID Card Print</a></li>
                         </ul>
                        
                     </ul>
