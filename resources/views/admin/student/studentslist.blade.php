@@ -29,7 +29,7 @@
                             
                        
                         <tr>
-                            <th scope="row">{{ ++$key }}</th>
+                            <th scope="row">{{ $students->firstItem() + $key }}</th>
                             <td>{{ $row->first_name." ".$row->last_name}}</td>
                             <td>{{ $row->student_id}}</td>
                             <td>{{ $row->class_name}}</td>                            
@@ -43,6 +43,7 @@
                         </tr>
                         @endforeach
                    </table>
+                   {{ $students->links() }}
                 </div>
             </div>
         </div>

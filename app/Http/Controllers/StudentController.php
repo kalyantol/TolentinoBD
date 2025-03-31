@@ -15,7 +15,7 @@ class StudentController extends Controller
       $students =   DB::table('students')
         ->leftJoin('classes', 'students.class_id', '=', 'classes.id')
         ->leftjoin('sections', 'students.section_id', '=', 'sections.id')
-        ->select('students.*', 'classes.title as class_name', 'sections.title as section_name')->get();
+        ->select('students.*', 'classes.title as class_name', 'sections.title as section_name')->paginate(5);
         return view('admin.student.studentslist', compact('students'));
     }
     public function addstudent(){
