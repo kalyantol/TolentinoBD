@@ -19,6 +19,14 @@
                                 <td>{{ $student->student_id }}</td>
                             </tr>                            
                             <tr>
+                                <td class="text-end">Class:</td>
+                                <td>{{ $student->class_name }}</td>
+                            </tr>                            
+                            <tr>
+                                <td class="text-end">Sectiob:</td>
+                                <td>{{ $student->section_name }}</td>
+                            </tr>                            
+                            <tr>
                                 <td class="text-end">Date of Birth:</td>
                                 <td>{{ $student->dob }}</td>
                             </tr>                            

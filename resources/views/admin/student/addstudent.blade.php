@@ -64,6 +64,23 @@
                     </div>
                     <br>
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Section</label>
+                        <div class="col-sm-10">
+                            <select class="form-control @error('section_id') is-invalid @enderror" name="section_id" >                                
+                                <option value="">Select Section</option>
+                                @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}">{{ $section->title }}</option>
+                                @endforeach
+                            </select>
+                                @error('section_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>                                
+                                @enderror
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
                         <div class="col-sm-10 text-center">
                             <button type="submit" class="btn btn-success">Add Student</button>
                             <button type="reset" class="btn btn-warning">Reset</button>

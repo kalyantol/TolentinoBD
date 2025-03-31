@@ -32,8 +32,8 @@
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $row->first_name." ".$row->last_name}}</td>
                             <td>{{ $row->student_id}}</td>
-                            <td>KG I</td>
-                            <td>Mynas</td>
+                            <td>{{ $row->class_name}}</td>                            
+                            <td>{{ $row->section_name}}</td>
                             <td>
                             <a class="btn btn-primary" href="{{ route('viewstudent',Crypt::encryptString($row->id)) }}" role="button">View</a>
                             <a class="btn btn-warning" href="{{ route('editstudent',Crypt::encryptString($row->id)) }}" role="button">Edit</a>
